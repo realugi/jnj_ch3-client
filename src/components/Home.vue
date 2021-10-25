@@ -1,23 +1,24 @@
 <template>
   <div>
     <todo-create v-on:add-todo="addTodo"></todo-create>
-    <todo-list
-      v-bind:todos="todos"
+    <todo-element
+      v-for="todo in todos"
+      v-bind:key="todo.id"
+      v-bind:todo="todo"
       v-on:update-todo="updateTodo"
       v-on:delete-todo="deleteTodo"
-    >
-    </todo-list>
+    ></todo-element>
   </div>
 </template>
 
 <script>
-import TodoList from '@/components/TodoList'
+import TodoElement from '@/components/TodoElement'
 import TodoCreate from '@/components/TodoCreate'
 
 export default {
   name: 'Home',
   components: {
-    'todo-list': TodoList,
+    'todo-element': TodoElement,
     'todo-create': TodoCreate
   },
   data () {
