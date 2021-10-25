@@ -3,8 +3,9 @@
     <todo-element
       v-for="todo in todos"
       v-bind:key="todo.id"
-      v-bind:description="todo.description"
-      v-bind:done="todo.done"
+      v-bind:todo="todo"
+      v-on:update-todo="$emit('update-todo', $event)"
+      v-on:delete-todo="$emit('delete-todo', $event)"
     ></todo-element>
   </div>
 </template>
@@ -17,16 +18,6 @@ export default {
   components: {
     'todo-element': TodoElement
   },
-  data () {
-    return {
-      todos: []
-    }
-  },
-  created () {
-    var todoApi = this.$resource('todos{/id}')
-    todoApi.get().then(res => {
-      this.todos = res.body
-    })
-  }
+  props: ['todos']
 }
 </script>
