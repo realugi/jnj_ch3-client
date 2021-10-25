@@ -6,16 +6,19 @@
 </template>
 
 <script>
+const initialTodo = () => {
+  return { description: '', done: 0 }
+}
+
 export default {
   name: 'TodoCreate',
   data () {
-    return {
-      todo: {description: '', done: 0}
-    }
+    return { todo: initialTodo() }
   },
   methods: {
     add () {
       this.$emit('add-todo', this.todo)
+      this.todo = initialTodo()
     }
   }
 }

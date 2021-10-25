@@ -1,8 +1,8 @@
 <template>
   <div>
-    <p>{{ todo.id }}</p>
-    <p>{{ todo.description }}</p>
-    <p>{{ todo.done }}</p>
+    <p>id: {{ todo.id }}</p>
+    <p>description: {{ todo.description }}</p>
+    <p>done: {{ todo.done === 0 ? 'no' : 'yes' }}</p>
     <button v-on:click="check()">Check</button>
     <button v-on:click="uncheck()">Uncheck</button>
     <button v-on:click="remove()">Delete</button>
